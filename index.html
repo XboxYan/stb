@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-	<meta http-equiv="content-type" content="1280*720; text/html; charset=utf-8">
+	<meta http-equiv="content-type" content="charset=UTF-8">
+    <meta name="viewport" content="width=1280, user-scalable=no">
 	<title>同洲直播</title>
 	<link href="css/main.css" type="text/css" rel="stylesheet">
 </head>
@@ -195,7 +196,7 @@ function doConfirm(){
 		case 1:
 		case 4:
 			var item = LIST[botnavFocus].list[listFocus].userInfo;
-			getPlayUrl(item.userCode,item.roomInfo.roomCode);
+			getPlayUrl(item.userCode,item.roomInfo.roomCode,item.roomInfo.title);
 			break;	
 		case 2:
 			if(botnavFocus>0){
@@ -299,7 +300,7 @@ function getList(list){
 }
 
 //播放串
-function getPlayUrl(userCode,roomCode){
+function getPlayUrl(userCode,roomCode,title){
 	ajax({
         //type:"GET", 
         url:URL+'LivePortal/live/getPlayUrl?version=V001&terminalType=1&playType=2&resourceCode='+userCode+'&roomCode='+roomCode,  
@@ -308,7 +309,7 @@ function getPlayUrl(userCode,roomCode){
         },
         success:function(_data){
             var url = JSON.parse(_data).data.playURL;
-			alert(url);
+			showInfoFromJs&&showInfoFromJs(title,url,roomCode);
         }
     });
 }
@@ -347,7 +348,7 @@ function getAllList(columnTypeId,currentpage,callback,change){
 function getRecList(){
 	if(LIST[0].list){
 		getList(LIST[0].list);
-		pageArrow(LIST[botnavFocus].currentPage,LIST[botnavFocus].totalPage);
+		pageArrow(0,1);
 	}else{
 		ajax({
 			//type:"GET", 

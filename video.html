@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="1280*720; text/html; charset=utf-8">
+    <title>同洲直播</title>
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+</head>
+<style>
+
+</style>
+
+<body onload='initPage()'>
+    <div class="main">
+
+        <div class="video_title">
+            <strong id="title">标题555</strong>
+            <!--<span>2567</span>-->
+        </div>
+        <div class="view" id="view01">
+            <div class="view01">
+                <div class="code" id="qrcode1">二维码生成中</div>
+            </div>
+        </div>
+        <div class="view" id="view02">
+            <div class="view021">
+                <div class="code"></div>
+            </div>
+            <div class="view022">
+                <ul class="danmu_list">
+                    <li id="danmu_0" class="current"><i>1</i><span>G1</span>
+                        <a></a>
+                    </li>
+                    <li id="danmu_1"><i>2</i><span>G2</span>
+                        <a></a>
+                    </li>
+                    <li id="danmu_2"><i>3</i><span>666</span>
+                        <a></a>
+                    </li>
+                    <li id="danmu_3"><i>4</i><span>弹幕姬在此</span><a>修改</a></li>
+                    <li id="danmu_4"><i>5</i><span>讲的啥，没听懂</span><a>修改</a></li>
+                    <li id="danmu_5"><i>6</i><span>666666</span><a>修改</a></li>
+                    <li id="danmu_6"><i>7</i><span>赞，很有帮助</span><a>修改</a></li>
+                    <li id="danmu_7"><i>8</i><span>666</span><a>修改</a></li>
+                    <li id="danmu_8"><i>9</i><span>666</span><a>修改</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="video_footer">
+            <a href="#"><img src="img/action01.png"></a>
+            <a href="#"><img src="img/action02.png"></a>
+            <a href="#"><img src="img/action03.png"></a>
+            <a href="#"><img src="img/action04.png"></a>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/json2.min.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+
+<script>
+var view = [0,0,0,0];
+var code = [false,false];
+var danmuFocus = [0,0];
+
+function initPage(){//进入加载
+   
+    //getTopnav(topNav);
+    //alert(55555555)
+    //getList(list);
+    //document.getElementById('title').innerHTML =  '77777';
+}
+
+
+
+function showInfoFromJava(msg){  
+
+
+
+    //alert('来自客户端的消息')
+
+     document.getElementById('title').innerHTML =  '5555555';
+
+     
+
+} 
+
+function moveDanmuFocus(offset){//nav移动1  /  -1
+    danmuFocus[1] = 0;
+    removeClass($("danmu_"+danmuFocus[0]),"current");
+    removeClass($("danmu_"+danmuFocus[0]),"change");
+    danmuFocus[0] += offset;
+    if(danmuFocus[0] < 0) danmuFocus[0] = 0;
+    else if(danmuFocus[0] > 8) danmuFocus[0] = 8;
+    addClass($("danmu_"+danmuFocus[0]),"current");
+}
+
+function moveChangeFocus(offset){
+    removeClass($("list_"+listFocus),"current");
+    listFocus += offset;
+    if(listFocus < 0) listFocus = 0;
+    else if(listFocus > 5) listFocus = 5;
+    addClass($("list_"+listFocus),"current");
+}
+
+function moveUp(){//默认上键操作,可在当前页面重写默认执行函数
+    if(view[1]){
+        moveDanmuFocus(-1);
+    }
+}
+
+function moveDown(){//默认下键操作,可在当前页面重写默认执行函数
+    if(view[1]){
+        moveDanmuFocus(1);
+    }
+}
+
+function moveRight(){//默认右键操作, 可在当前页面重写默认执行函数
+    if(view[1]&&danmuFocus[0]>2){
+        addClass($("danmu_"+danmuFocus[0]),"change");
+        danmuFocus[1] = 1;
+    }
+}
+function moveLeft(){//默认左键操作,可在当前页面重写默认执行函数
+    if(view[1]&&danmuFocus[0]>2){
+        removeClass($("danmu_"+danmuFocus[0]),"change");
+        danmuFocus[1] = 0;
+    }
+
+}
+
+function doReturnKey(){  //返回按键
+    
+}
+
+function turnPage(type){ //翻页
+    alert(type)
+}
+
+function doRedKey(){ //按红色按键
+    if(!view[0]){
+        $("view01").style.display = 'block';
+        $("view02").style.display = 'none';
+        view[0] = 1;
+        view[1] = 0;
+        if(!code[0]){
+            setTimeout(function(){
+                var qrcode = new QRCode('qrcode1', {
+                    text: '11111111',
+                    width: 100,
+                    height: 100,
+                    colorDark : '#000000',
+                    colorLight : '#ffffff',
+                    correctLevel : QRCode.CorrectLevel.Q
+                });
+                code[0] = true;
+            },500)   
+        }
+    }else{
+        $("view01").style.display = 'none';
+        view[0] = 0;
+    }
+}
+
+function doGreenKey(){ //按绿色按键
+    if(!view[1]){
+        $("view02").style.display = 'block';
+        $("view01").style.display = 'none';
+        view[1] = 1;
+        view[0] = 0;
+    }else{
+        $("view02").style.display = 'none';
+        view[1] = 0;
+    }
+}
+
+function doYellowKey(){
+    alert('弹幕开关');
+}
+
+function doBlueKey(){
+    alert('关注');
+}
+
+function doConfirm(){//按确定
+    if(view[1]){
+        if(danmuFocus[1]){
+            alert('修改弹幕'+danmuFocus[0])
+        }else{
+            alert('发送弹幕'+danmuFocus[0])
+        }
+    } 
+}
+</script>
+
+</html>

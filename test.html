@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="1280*720; text/html; charset=utf-8">
+	<title>同洲直播</title>
+    <script type="text/javascript" src="js/qrcode.min.js"></script>
+</head>
+
+<body>
+	<div id="placeHolder" style="width: 300px;height: 300px;"></div>
+</body>
+<script>
+
+
+
+var qrcode = new QRCode('placeHolder', {
+  text: '13027177764',
+  width: 300,
+  height: 300,
+  colorDark : '#000000',
+  colorLight : '#ffffff',
+  correctLevel : QRCode.CorrectLevel.H
+});
+//qrcode.makeCode()
+//document.getElementById('placeHolder').innerHTML = qr.createImgTag();
+</script>
+
+</html>

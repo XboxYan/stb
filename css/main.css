@@ -21,7 +21,7 @@ a,button,input,textarea{-webkit-tap-highlight-color: rgba(0,0,0,0);}
 	body { -webkit-font-smoothing: subpixel-antialiased; }
 }
 /**/
-html,body{ height: 100%; color: #fff;}
+html,body{ height: 100%; color: #fff; background: #000;}
 .main{ position: absolute; width: 1280px; height: 720px; margin:auto; background: url('../img/bg.jpg') no-repeat; left: 0; right: 0; bottom: 0; top: 0;}
 .header{ overflow: hidden; padding: 25px 40px;}
 .logo{ float: left; height: 66px; width: 205px; background: url('../img/logo.png') left center no-repeat; font-size: 0;}
@@ -47,7 +47,7 @@ html,body{ height: 100%; color: #fff;}
 .con_poster_wrap{ display: inline-block; padding: 16px 16px 12px 16px; }
 .con_poster{ display: inline-block; margin-top: 5px; width: 310px; height: 165px; border: 2px solid #32daff; position: relative;}
 .con_poster_inner{ display: inline-block; width: 100%; height: 100%; overflow: hidden;}
-.con_poster img{ width: 100%;}
+.con_poster img{ width: 100%; height: 100%; object-fit: cover;}
 .con_poster i{ position: absolute;height: 38px; padding: 0 10px; text-align: left; font-style: normal; left: 0; bottom: 0; right: 0;color: #fff; background: url(../img/shadow_bg.png);}
 .con_poster i span{ display: inline-block; height: 38px; line-height: 38px; font-size: 18px; padding-left: 30px; background-position: left center; background-repeat: no-repeat;}
 .list_user{ background-image: url('../img/ico01.png')}
@@ -123,3 +123,25 @@ html,body{ height: 100%; color: #fff;}
 .zone_select.zone_select:before{ margin-left: -26px;}
 .submain .bot_nav,.submain .sub_nav_wrap{ display: none!important;}
 .submain .sub_title{display: block;}
+
+/**视频**/
+.video_con{width: 1280px; height: 720px; margin: 0 auto; position: relative;}
+.video_title{ position: absolute; padding: 15px 0; color: #e5e5e5; left: 0; top: 0; width: 100%; background: url(../img/shadow_bg.png)}
+.video_title strong{ font-size: 30px; margin-left: 50px; font-weight: normal;}
+.video_title span{ font-size: 24px; margin-left: 50px; padding-left: 30px; background: url(../img/user.png) left center no-repeat;}
+.video_footer{ position: absolute; bottom: 0;left: 0; right: 0; text-align: right; padding: 0 40px;  background: url(../img/shadow_bg.png)}
+.video_footer a{ display: inline-block; margin:10px;}
+.view{ display: none; position: absolute; left: 0; right: 0; top: 70px; right: 0; bottom: 63px; z-index: 1000;}
+.view01{ position: absolute; right: 10px; bottom: 10px; width: 581px; height: 309px; background: url(../img/code_bg1.png)}
+.view01 .code{ position: absolute;color: #333; width: 188px; height: 188px; border: 5px solid #fff; right: 59px; top: 53px;}
+.view01 .code table{ width: 100%; height: 100%; margin-left: 0!important;margin-top: 0!important;margin-right: 0!important;margin-bottom: 0!important;}
+.view021{position: absolute; left: 10px; bottom: 10px; width: 251px; height: 496px; background: url(../img/code_bg2.png)}
+.view021 .code{ position: absolute; color: #333; width: 170px; height: 170px; border: 5px solid #fff; right: 35px; bottom: 42px;}
+.view022{position: absolute; right: 10px; bottom: 10px; width: 398px; background: url(../img/code_bg3.png) left -1px no-repeat;}
+.danmu_list li{ height: 50px; padding: 1px 0; line-height: 50px; color: #fff; font-size: 24px; position: relative; padding-left: 100px; padding-right: 80px;}
+.danmu_list i{ position: absolute; left: 0; width: 52px; text-align: center; font-style: normal; }
+.danmu_list a{ position: absolute; right: 0; top: 0; width: 80px; text-align: center;}
+.danmu_list span{ display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.danmu_list li.current{ background: url(../img/code_bg_focus.png) left center no-repeat;}
+.danmu_list li.change{background:none;}
+.danmu_list li.change a{ background: #ff9933;}
