@@ -309,7 +309,8 @@ function getPlayUrl(userCode,roomCode,title){
         },
         success:function(_data){
             var url = JSON.parse(_data).data.playURL;
-			showInfoFromJs&&showInfoFromJs(title,url,roomCode);
+			alert(url);
+			showInfoFromJs(title,url,roomCode);
         }
     });
 }
