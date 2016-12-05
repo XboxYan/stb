@@ -48,7 +48,8 @@
 <script>
 
 //初始值
-var URL = 'http://120.77.8.170:8081/';
+var URL = 'http://120.77.8.170:8081/';//阿里云
+//var URL = 'http://10.9.212.13:8088/';//内网
 var AreaFocus = 0;//区域焦点
 var topnavFocus = 0;//上边焦点
 var botnavFocus = 0;//下边焦点
@@ -112,7 +113,7 @@ function moveDown(){
 		removeClass($("top_nav_"+topnavFocus),"focus");
         addClass($("list_"+listFocus),"focus");
 	}else if(AreaFocus===1){
-		if((botnavFocus===0&&listFocus===0)||listFocus>2||LIST[botnavFocus].list.length<3){
+		if((botnavFocus===0&&listFocus===0)||listFocus>2||LIST[botnavFocus].list.length<=3){
 			AreaFocus = 2;
 			removeClass($("list_"+listFocus),"focus");
         	addClass($("botav_"+botnavFocus),"focus");
@@ -291,7 +292,7 @@ function getList(list){
 		for(var i=0;i<len;i++){
 			var item = list[i].userInfo;
 			var img = list[i].recommendPic?list[i].recommendPic:item.roomInfo.logo;
-			html += '<li id="list_'+i+'" class="con_list_item '+((AreaFocus===1||AreaFocus===4)&&i===0?"focus":"")+'"><div class="con_poster"><span class="con_poster_inner"><img src="'+img+'" /><i><span class="list_user">'+item.nickName+'</span><span class="list_num">3650</span></i></span></div><span class="con_title">'+item.roomInfo.title+'</span></li>'
+			html += '<li id="list_'+i+'" class="con_list_item '+((AreaFocus===1||AreaFocus===4)&&i===0?"focus":"")+'"><div class="con_poster"><span class="con_poster_inner"><img src="'+img+'" /><i><span class="list_user">'+(item.nickName?item.nickName:item.userCode)+'</span><span class="list_num">3650</span></i></span></div><span class="con_title">'+item.roomInfo.title+'</span></li>'
 		}
 	}else{
 		html = '<li class="list_null mfix"><span>没有找到数据</span></li>'
@@ -310,7 +311,7 @@ function getPlayUrl(userCode,roomCode,title){
         success:function(_data){
             var url = JSON.parse(_data).data.playURL;
 			alert(url);
-			showInfoFromJs(title,url,roomCode);
+			window.AndroidWebView.showInfoFromJs(title,url,roomCode);
         }
     });
 }
